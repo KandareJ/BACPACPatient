@@ -9,7 +9,7 @@ export function runTiming(clock, value, dest) {
   };
 
   const config = {
-    duration: 1000,
+    duration: 700,
     toValue: new Value(0),
     easing: Easing.inOut(Easing.ease)
   };
