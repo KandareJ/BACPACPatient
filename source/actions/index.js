@@ -1,10 +1,11 @@
 export const ADD_DEVICE = 'ADD_DEVICE';
 
-export const addDevice = (uuid) => {
+export const selectDevice = (uuid, name) => {
   return {
     type: ADD_DEVICE,
     payload: {
-      uuid
+      uuid,
+      name
     }
   }
 }

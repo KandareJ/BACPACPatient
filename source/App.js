@@ -1,14 +1,16 @@
-import React, { Component } from 'react'
-import DeviceConnect from './components/DeviceConnect/DeviceConnect'
-import { NavigationContainer } from '@react-navigation/native';
-import ConnectedDevice from './components/ConnectedDevice/ConnectedDevice';
+import React, { Component } from 'react';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+import reducers from './reducers';
+import Navigation from './components/Navigation';
 
 export default class App extends Component {
   render() {
     return(
-      <NavigationContainer>
-	<ConnectedDevice />
-      </NavigationContainer>
+        <Provider store={createStore(reducers)}>
+	       <Navigation />
+        </Provider>
     );
   }
 };
