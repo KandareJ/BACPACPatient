@@ -5,10 +5,7 @@ import ConnectedDevice from '../ConnectedDevice/ConnectedDevice';
 
 class Navigation extends Component {
   render() {
-    console.log(this.props);
-    return (
-      <DeviceConnect />
-    );
+    return (this.props.device === null) ? (<DeviceConnect />) : (<ConnectedDevice />);
   }
 }
 
