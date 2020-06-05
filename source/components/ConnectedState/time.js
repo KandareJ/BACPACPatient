@@ -5,28 +5,35 @@ export const toRelativeTime = (previous) => {
   let msPerMonth = msPerDay * 30;
   let msPerYear = msPerDay * 365;
   let elapsed = Date.now() - previous;
+  let val = 0;
 
   if (elapsed < msPerMinute) {
-    return Math.floor(elapsed/1000) + ' seconds ago';
+    val = Math.floor(elapsed/1000);
+    return  (val == 1) ? val + ' second ago' : val + ' seconds ago';
   }
 
   else if (elapsed < msPerHour) {
-    return Math.floor(elapsed/msPerMinute) + ' minutes ago';
+    val = Math.floor(elapsed/msPerMinute);
+    return  (val == 1) ? val + ' minute ago' : val + ' minutes ago';
   }
 
   else if (elapsed < msPerDay ) {
-    return Math.floor(elapsed/msPerHour ) + ' hours ago';
+    val = Math.floor(elapsed/msPerHour);
+    return  (val == 1) ? val + ' hour ago' : val + ' hours ago';
   }
 
   else if (elapsed < msPerMonth) {
-    return 'approximately ' + Math.floor(elapsed/msPerDay) + ' days ago';
+    val = Math.floor(elapsed/msPerDay);
+    return  (val == 1) ? val + ' day ago' : val + ' days ago';
   }
 
   else if (elapsed < msPerYear) {
-    return 'approximately ' + Math.floor(elapsed/msPerMonth) + ' months ago';
+    val = Math.floor(elapsed/msPerMonth);
+    return  (val == 1) ? val + ' month ago' : val + ' months ago';
   }
 
   else {
-    return 'approximately ' + Math.floor(elapsed/msPerYear ) + ' years ago';
+    val = Math.floor(elapsed/msPerYear);
+    return  (val == 1) ? val + ' year ago' : val + ' years ago';
   }
 }
