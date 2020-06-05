@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import { TapGestureHandler } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
-import { styles } from './styles';
 import { connect } from 'react-redux';
+
+import { styles } from './styles';
 import { toRelativeTime } from './time';
 
-class ConnectedDevice extends Component {
+class ConnectedState extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -50,4 +51,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(ConnectedDevice);
+export default connect(mapStateToProps)(ConnectedState);

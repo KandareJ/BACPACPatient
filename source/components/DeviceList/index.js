@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
+
 import Device from './Device';
 import { styles } from './styles';
 
