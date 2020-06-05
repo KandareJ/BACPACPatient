@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'black',
     height: null,
     width: null,
-    opacity: .8
+    opacity: .75
   },
   bottomView: {
     height: height,
@@ -51,7 +51,11 @@ export const styles = StyleSheet.create({
     color: 'black'
   },
   absoluteFill: {
-    ...StyleSheet.absoluteFill
+    ...StyleSheet.absoluteFill,
+    shadowColor: 'black',
+    shadowRadius: 8,
+    shadowOffset: { width: 5, height: 5 },
+    shadowOpacity: .5
   },
   closeButton: {
     height: 40,
