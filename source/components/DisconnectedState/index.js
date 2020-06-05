@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import Animated, { Value, event, block, cond, eq, set, interpolate, Extrapolate, Clock } from 'react-native-reanimated';
 import { TapGestureHandler, State } from 'react-native-gesture-handler';
+
 import { height, styles } from './styles.js';
 import { runTiming } from './AnimationTiming';
-import DeviceList from '../BLE/DeviceList';
+import DeviceList from '../DeviceList';
 
-export default class DeviceConnect extends Component {
+export default class DisconnectedState extends Component {
   constructor() {
     super();
     this.buttonOpacity = new Value(1);

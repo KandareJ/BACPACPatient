@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
-import { selectDevice } from '../../actions';
 import { connect } from 'react-redux';
+
+import { selectDevice } from '../../actions';
 import { styles } from './styles';
 
 class Device extends Component {

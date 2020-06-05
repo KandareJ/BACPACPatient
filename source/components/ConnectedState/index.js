@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 import { TapGestureHandler } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
-import { styles } from './styles';
 import { connect } from 'react-redux';
+
+import { styles } from './styles';
 import { toRelativeTime } from './time';
 
-class ConnectedDevice extends Component {
+class ConnectedState extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -29,8 +30,8 @@ class ConnectedDevice extends Component {
           <Text style={styles.title}>{this.props.device.name}</Text>
           <Text style={styles.text}>Battery:<Text style={styles.textNotBold}> {this.state.battery}%</Text></Text>
           <Text style={styles.text}>Storage:<Text style={styles.textNotBold}> {this.state.storage}%</Text></Text>
-          <Text style={styles.text}>Last Sync:<Text style={styles.textNotBold}> {toRelativeTime(this.state.lastSync)}</Text></Text>
-          <Text style={styles.text}>Last Push:<Text style={styles.textNotBold}> {toRelativeTime(this.state.lastPush)}</Text></Text>
+          <Text style={styles.text}>Last Sync:<Text style={styles.textNotBold}> {toRelativeTime(this.state.lastSync, Date.now())}</Text></Text>
+          <Text style={styles.text}>Last Push:<Text style={styles.textNotBold}> {toRelativeTime(this.state.lastPush, Date.now())}</Text></Text>
         </View>
 
         <TapGestureHandler onHandlerStateChange={this.onButtonStateChange}>
@@ -50,4 +51,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps)(ConnectedDevice);
+export default connect(mapStateToProps)(ConnectedState);

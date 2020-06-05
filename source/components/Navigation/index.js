@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import DeviceConnect from '../DeviceConnect/DeviceConnect';
-import ConnectedDevice from '../ConnectedDevice/ConnectedDevice';
-import Loading from '../Loading';
+
+import DisconnectedState from '../DisconnectedState';
+import ConnectedState from '../ConnectedState';
+import LoadingState from '../LoadingState';
 
 class Navigation extends Component {
   render() {
-    if (this.props.device === null) return (<DeviceConnect />);
-    else if (this.props.connecting) return (<Loading />);
-    else return (<ConnectedDevice />)
+    if (this.props.device === null) return (<DisconnectedState />);
+    else if (this.props.connecting) return (<LoadingState />);
+    else return (<ConnectedState />)
   }
 }
 
