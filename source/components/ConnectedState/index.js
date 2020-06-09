@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
-import { TapGestureHandler } from 'react-native-gesture-handler';
+import { State, TapGestureHandler } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { connect } from 'react-redux';
 
 import TopBar from '../TopBar';
 import { styles } from './styles';
 import { toRelativeTime } from './time';
+import { receiveData } from '../../logic/HttpProxy';
 
 class ConnectedState extends Component {
   constructor(props) {
@@ -19,8 +20,11 @@ class ConnectedState extends Component {
     }
   }
 
-  onButtonStateChange() {
-    console.log("pushy pushy")
+  onButtonStateChange({nativeEvent}) {
+    if (nativeEvent.state === State.ACTIVE) {
+      console.log("pushy pushy");
+      receiveData((resp)=>{console.log(resp.data)});
+    }
   }
 
   render() {
