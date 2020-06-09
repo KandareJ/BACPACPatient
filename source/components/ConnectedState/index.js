@@ -55,6 +55,10 @@ class ConnectedState extends Component {
     }
   }
 
+  componentDidMount() {
+    this.interval = setInterval(() => {this.setState({battery: this.state.battery})}, 60000);
+  }
+
   render() {
     return (
       <View style={styles.bgView}>
@@ -76,6 +80,10 @@ class ConnectedState extends Component {
 
 	    </View>
 	  );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 }
 
