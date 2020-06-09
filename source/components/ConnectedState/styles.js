@@ -13,7 +13,7 @@ export const styles = StyleSheet.create({
   },
   button: {
     marginTop: 50,
-    backgroundColor: 'white',
+    backgroundColor: 'rgb(70,100,140)',
     height: 70,
     width: '60%',
     marginHorizontal: 20,
@@ -41,6 +41,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'normal'
   },
   buttonText: {
-    fontSize: 20
+    fontSize: 20,
+    color: 'white'
   }
 });

@@ -14,7 +14,7 @@ class LoadingState extends Component {
 
     return(
       <View style={styles.bgView}>
-        <TopBar title={"Loading"} />
+        <TopBar title={"Establishing Connection"} />
         <Image style={styles.gif} source={require('../../../assets/img/loading3.gif')} />
       </View>
     )
