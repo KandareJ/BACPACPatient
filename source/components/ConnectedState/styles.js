@@ -25,6 +25,21 @@ export const styles = StyleSheet.create({
     shadowOffset: { width: 5, height: 5 },
     shadowOpacity: .7
   },
+  buttonPress: {
+    marginTop: 50,
+    backgroundColor: 'rgb(70,100,140)',
+    height: 70,
+    width: '60%',
+    marginHorizontal: 20,
+    borderRadius: 25,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: '#808080',
+    shadowRadius: 7,
+    shadowOffset: { width: 2, height: 2 },
+    shadowOpacity: .7,
+    opacity: .9
+  },
   textView: {
     marginTop: 10,
     width: '75%'
@@ -42,6 +57,7 @@ export const styles = StyleSheet.create({
   },
   buttonText: {
     fontSize: 20,
+    fontWeight: 'bold',
     color: 'white'
   }
 });

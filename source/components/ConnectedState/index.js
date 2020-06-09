@@ -16,21 +16,25 @@ class ConnectedState extends Component {
     this.state = {
       battery: 82,
       storage: 43,
-      lastSync: Date.now(),
-      lastPush: Date.now()
+      lastSync: -1,
+      lastPush: -1,
+      isPressed: false
     }
+    this.onButtonStateChange = this.onButtonStateChange.bind(this);
   }
 
   onButtonStateChange({nativeEvent}) {
-    if (nativeEvent.state === State.ACTIVE) {
-      console.log("pushy pushy");
-      write("Testy testy", () => {
-        console.log("Successfully Written");
-        read((fromFile) => {
-          console.log("Successfully Read:", fromFile);
-          deleteFile(()=>{console.log("Deleted file")});
-      });
-      } );
+    if (nativeEvent.state === State.BEGAN) {
+      this.setState({isPressed: true})
+    }
+    else if (nativeEvent.state === State.ACTIVE) {
+      console.log("Pushy pushy");
+      if (this.state.lastPush >= this.state.lastSync) {
+        this.setState({lastSync: Date.now(), isPressed: false})
+      }
+      else {
+        this.setState({lastPush: Date.now(), isPressed: false})
+      }
     }
   }
 
@@ -48,8 +52,8 @@ class ConnectedState extends Component {
         </View>
 
         <TapGestureHandler onHandlerStateChange={this.onButtonStateChange}>
-          <Animated.View style={styles.button}>
-              <Text style={styles.buttonText}>Sync</Text>
+          <Animated.View style={(this.state.isPressed) ? styles.buttonPress : styles.button}>
+              <Text style={styles.buttonText}>{(this.state.lastPush >= this.state.lastSync) ? "Sync" : "Push"}</Text>
           </Animated.View>
         </TapGestureHandler>
 
