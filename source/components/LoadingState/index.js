@@ -10,11 +10,11 @@ import TopBar from '../TopBar';
 class LoadingState extends Component {
 
   render() {
-    //setTimeout(this.props.finishConnecting, 2000);
+    setTimeout(this.props.finishConnecting, 2000);
 
     return(
       <View style={styles.bgView}>
-        <TopBar />
+        <TopBar title={"Loading"} />
         <Image style={styles.gif} source={require('../../../assets/img/loading3.gif')} />
       </View>
     )

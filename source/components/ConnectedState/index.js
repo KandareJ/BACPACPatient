@@ -4,6 +4,7 @@ import { TapGestureHandler } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { connect } from 'react-redux';
 
+import TopBar from '../TopBar';
 import { styles } from './styles';
 import { toRelativeTime } from './time';
 
@@ -25,9 +26,10 @@ class ConnectedState extends Component {
   render() {
     return (
       <View style={styles.bgView}>
+        <TopBar title={this.props.device.name}/>
         <Image style={styles.image} source={require('../../../assets/img/BackHarnessWoman.png')} />
         <View style={styles.textView}>
-          <Text style={styles.title}>{this.props.device.name}</Text>
+          <Text style={styles.text}>{this.props.device.name}</Text>
           <Text style={styles.text}>Battery:<Text style={styles.textNotBold}> {this.state.battery}%</Text></Text>
           <Text style={styles.text}>Storage:<Text style={styles.textNotBold}> {this.state.storage}%</Text></Text>
           <Text style={styles.text}>Last Sync:<Text style={styles.textNotBold}> {toRelativeTime(this.state.lastSync, Date.now())}</Text></Text>
