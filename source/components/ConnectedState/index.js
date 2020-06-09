@@ -3,6 +3,7 @@ import { View, Text, Image } from 'react-native';
 import { State, TapGestureHandler } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { connect } from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import TopBar from '../TopBar';
 import { styles } from './styles';
@@ -21,6 +22,18 @@ class ConnectedState extends Component {
       isPressed: false
     }
     this.onButtonStateChange = this.onButtonStateChange.bind(this);
+    this.readStorage = this.readStorage.bind(this);
+
+    this.readStorage();
+  }
+
+  readStorage() {
+    AsyncStorage.getItem(`lastPush`).then((value) => {
+      if (value !== null) this.setState({lastPush: JSON.parse(value)});
+    });
+    AsyncStorage.getItem(`lastSync`).then((value) => {
+      if (value !== null) this.setState({lastSync: JSON.parse(value)});
+    })
   }
 
   onButtonStateChange({nativeEvent}) {
@@ -30,10 +43,14 @@ class ConnectedState extends Component {
     else if (nativeEvent.state === State.ACTIVE) {
       console.log("Pushy pushy");
       if (this.state.lastPush >= this.state.lastSync) {
-        this.setState({lastSync: Date.now(), isPressed: false})
+        let time = Date.now();
+        AsyncStorage.setItem(`lastSync`, JSON.stringify(time));
+        this.setState({lastSync: time, isPressed: false})
       }
       else {
-        this.setState({lastPush: Date.now(), isPressed: false})
+        let time = Date.now();
+        AsyncStorage.setItem(`lastPush`, JSON.stringify(time));
+        this.setState({lastPush: time, isPressed: false})
       }
     }
   }
