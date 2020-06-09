@@ -8,6 +8,7 @@ import TopBar from '../TopBar';
 import { styles } from './styles';
 import { toRelativeTime } from './time';
 import { receiveData } from '../../logic/HttpProxy';
+import { read, write, deleteFile } from '../../logic/FileSystemProxy';
 
 class ConnectedState extends Component {
   constructor(props) {
@@ -23,7 +24,13 @@ class ConnectedState extends Component {
   onButtonStateChange({nativeEvent}) {
     if (nativeEvent.state === State.ACTIVE) {
       console.log("pushy pushy");
-      receiveData((resp)=>{console.log(resp.data)});
+      write("Testy testy", () => {
+        console.log("Successfully Written");
+        read((fromFile) => {
+          console.log("Successfully Read:", fromFile);
+          deleteFile(()=>{console.log("Deleted file")});
+      });
+      } );
     }
   }
 
