@@ -3,27 +3,27 @@ import { toRelativeTime, minute, hour, day, month, year } from '../../../source/
 //time.js test suite
 describe('Relative Time Tests', () => {
 	it('-1 second', () => {
-		expect(toRelativeTime(0, -1000)).toBe('Negative time error');
+		expect(toRelativeTime(0, -1000)).toBe('-');
 	});
 
 	it('0 seconds', () => {
-		expect(toRelativeTime(0, 0)).toBe('0 seconds ago');
+		expect(toRelativeTime(0, 0)).toBe('Just moments ago');
 	});
 
 	it('0.5 seconds', () => {
-		expect(toRelativeTime(0, 500)).toBe('0 seconds ago');
+		expect(toRelativeTime(0, 500)).toBe('Just moments ago');
 	});
 
 	it('1 second', () => {
-		expect(toRelativeTime(0, 1000)).toBe('1 second ago');
+		expect(toRelativeTime(0, 1000)).toBe('Just moments ago');
 	});
 
 	it('30 seconds', () => {
-		expect(toRelativeTime(0, 30000)).toBe('30 seconds ago');
+		expect(toRelativeTime(0, 30000)).toBe('Just moments ago');
 	});
 
 	it('59 seconds', () => {
-		expect(toRelativeTime(0, 59999)).toBe('59 seconds ago');
+		expect(toRelativeTime(0, 59999)).toBe('Just moments ago');
 	});
 
 	it('1 minute', () => {

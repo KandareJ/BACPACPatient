@@ -8,13 +8,13 @@ export const toRelativeTime = (previous, current) => {
   let elapsed = current - previous;
   let val = 0;
 
-  if (elapsed < 0) {
-    return 'Negative time error';
+  if (elapsed < 0 || previous === -1) {
+    return '-';
   }
 
   else if (elapsed < minute) {
     val = Math.floor(elapsed/1000);
-    return  (val == 1) ? val + ' second ago' : val + ' seconds ago';
+    return  'Just moments ago';
   }
 
   else if (elapsed < hour) {

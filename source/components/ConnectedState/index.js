@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
-import { TapGestureHandler } from 'react-native-gesture-handler';
+import { State, TapGestureHandler } from 'react-native-gesture-handler';
 import Animated from 'react-native-reanimated';
 import { connect } from 'react-redux';
+import AsyncStorage from '@react-native-community/async-storage';
 
 import TopBar from '../TopBar';
 import { styles } from './styles';
 import { toRelativeTime } from './time';
+import { receiveData } from '../../logic/HttpProxy';
+import { read, write, deleteFile } from '../../logic/FileSystemProxy';
 
 class ConnectedState extends Component {
   constructor(props) {
@@ -14,13 +17,46 @@ class ConnectedState extends Component {
     this.state = {
       battery: 82,
       storage: 43,
-      lastSync: Date.now(),
-      lastPush: Date.now()
+      lastSync: -1,
+      lastPush: -1,
+      isPressed: false
+    }
+    this.onButtonStateChange = this.onButtonStateChange.bind(this);
+    this.readStorage = this.readStorage.bind(this);
+
+    this.readStorage();
+  }
+
+  readStorage() {
+    AsyncStorage.getItem(`lastPush`).then((value) => {
+      if (value !== null) this.setState({lastPush: JSON.parse(value)});
+    });
+    AsyncStorage.getItem(`lastSync`).then((value) => {
+      if (value !== null) this.setState({lastSync: JSON.parse(value)});
+    })
+  }
+
+  onButtonStateChange({nativeEvent}) {
+    if (nativeEvent.state === State.BEGAN) {
+      this.setState({isPressed: true})
+    }
+    else if (nativeEvent.state === State.ACTIVE) {
+      console.log("Pushy pushy");
+      if (this.state.lastPush >= this.state.lastSync) {
+        let time = Date.now();
+        AsyncStorage.setItem(`lastSync`, JSON.stringify(time));
+        this.setState({lastSync: time, isPressed: false})
+      }
+      else {
+        let time = Date.now();
+        AsyncStorage.setItem(`lastPush`, JSON.stringify(time));
+        this.setState({lastPush: time, isPressed: false})
+      }
     }
   }
 
-  onButtonStateChange() {
-    console.log("pushy pushy")
+  componentDidMount() {
+    this.interval = setInterval(() => {this.setState({battery: this.state.battery})}, 60000);
   }
 
   render() {
@@ -37,13 +73,17 @@ class ConnectedState extends Component {
         </View>
 
         <TapGestureHandler onHandlerStateChange={this.onButtonStateChange}>
-          <Animated.View style={styles.button}>
-              <Text style={styles.buttonText}>Sync</Text>
+          <Animated.View style={(this.state.isPressed) ? styles.buttonPress : styles.button}>
+              <Text style={styles.buttonText}>{(this.state.lastPush >= this.state.lastSync) ? "Sync" : "Push"}</Text>
           </Animated.View>
         </TapGestureHandler>
 
 	    </View>
 	  );
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 }
 
