@@ -22,5 +22,14 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 25,
     marginBottom: 15
+  },
+  image: {
+    width: 23,
+    height: 23
+  },
+  imageContainer: {
+    position: 'absolute',
+    left: 25,
+    top: 47
   }
-})
+});
