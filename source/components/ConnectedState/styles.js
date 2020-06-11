@@ -23,7 +23,8 @@ export const styles = StyleSheet.create({
     shadowColor: '#808080',
     shadowRadius: 7,
     shadowOffset: { width: 5, height: 5 },
-    shadowOpacity: .7
+    shadowOpacity: .7,
+    flexDirection: 'row'
   },
   buttonPress: {
     marginTop: 50,
@@ -59,5 +60,10 @@ export const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: 'white'
+  },
+  pulse: {
+    height: 30,
+    width: 30,
+    marginRight: 5
   }
 });
