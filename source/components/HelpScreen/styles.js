@@ -18,20 +18,12 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     alignItems: 'center'
   },
-  boldText1: {
-    fontWeight: 'bold',
-    fontSize: 25
-  },
-  text1: {
-    fontWeight: 'normal',
-    fontSize: 23
-  },
-  boldText2: {
+  boldText: {
     fontWeight: 'bold',
     fontSize: 22,
     marginBottom: 20
   },
-  text2: {
+  text: {
     fontWeight: 'normal',
     fontSize: 20
   }

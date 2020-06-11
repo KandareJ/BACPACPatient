@@ -6,4 +6,4 @@ export const storage = `If your BACPAC device is running low on storage, syncing
 
 export const battery = `If your BACPAC device is running low on battery, charge it before continuing with the test.`;
 
-export const issue = `Please report any issues that you may be having with this App or with the BACPAC device.`;
+export const issue = `Please report any issues that you may be having with this App or with the BACPAC device. To report an issue, select the 'Report Issue' option from the side menu.`;

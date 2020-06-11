@@ -13,6 +13,9 @@ const addedDeviceReducer = (last = null, action) => {
 
 const finishConnectingReducer = (last = true, action) => {
   if (action.type === FINISH_CONNECTING) return false;
+  else if (action.type === REMOVE_DEVICE) {
+    return true;
+  }
   else return last;
 }
 
