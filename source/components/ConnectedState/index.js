@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
-import { State, TapGestureHandler } from 'react-native-gesture-handler';
-import Animated from 'react-native-reanimated';
 import { connect } from 'react-redux';
 import AsyncStorage from '@react-native-community/async-storage';
 
 import TopBar from '../TopBar';
+import Button from './Button';
 import { styles } from './styles';
 import { toRelativeTime } from './time';
 import { receiveData } from '../../logic/HttpProxy';
@@ -18,13 +17,18 @@ class ConnectedState extends Component {
       battery: 82,
       storage: 43,
       lastSync: -1,
-      lastPush: -1,
-      isPressed: false
+      lastPush: -1
     }
-    this.onButtonStateChange = this.onButtonStateChange.bind(this);
+
     this.readStorage = this.readStorage.bind(this);
+    this.push = this.push.bind(this);
+    this.sync = this.sync.bind(this);
 
     this.readStorage();
+  }
+
+  componentDidMount() {
+    this.interval = setInterval(() => {this.setState({battery: this.state.battery})}, 60000);
   }
 
   readStorage() {
@@ -36,27 +40,31 @@ class ConnectedState extends Component {
     })
   }
 
-  onButtonStateChange({nativeEvent}) {
-    if (nativeEvent.state === State.BEGAN) {
-      this.setState({isPressed: true})
-    }
-    else if (nativeEvent.state === State.ACTIVE) {
-      console.log("Pushy pushy");
-      if (this.state.lastPush >= this.state.lastSync) {
-        let time = Date.now();
-        AsyncStorage.setItem(`lastSync`, JSON.stringify(time));
-        this.setState({lastSync: time, isPressed: false})
-      }
-      else {
+  push(callback) {
+    read((resp) => {
+      console.log(resp);
+      deleteFile((resp) => {
         let time = Date.now();
         AsyncStorage.setItem(`lastPush`, JSON.stringify(time));
-        this.setState({lastPush: time, isPressed: false})
-      }
-    }
+        this.setState({lastPush: time});
+        callback();
+      });
+    });
+
   }
 
-  componentDidMount() {
-    this.interval = setInterval(() => {this.setState({battery: this.state.battery})}, 60000);
+  sync(callback) {
+    //receiveData( (resp) => {
+    let resp = { data: "booboo"};
+      let toWrite = JSON.stringify(resp.data);
+      console.log(toWrite);
+      write(toWrite, () => {
+        let time = Date.now();
+        AsyncStorage.setItem(`lastSync`, JSON.stringify(time));
+        this.setState({lastSync: time});
+        callback();
+      });
+    //});
   }
 
   render() {
@@ -72,11 +80,7 @@ class ConnectedState extends Component {
           <Text style={styles.text}>Last Push:<Text style={styles.textNotBold}> {toRelativeTime(this.state.lastPush, Date.now())}</Text></Text>
         </View>
 
-        <TapGestureHandler onHandlerStateChange={this.onButtonStateChange}>
-          <Animated.View style={(this.state.isPressed) ? styles.buttonPress : styles.button}>
-              <Text style={styles.buttonText}>{(this.state.lastPush >= this.state.lastSync) ? "Sync" : "Push"}</Text>
-          </Animated.View>
-        </TapGestureHandler>
+        <Button push={this.push} sync={this.sync} pos={this.state.lastPush >= this.state.lastSync} />
 
 	    </View>
 	  );
