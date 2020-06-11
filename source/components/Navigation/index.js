@@ -4,12 +4,13 @@ import { connect } from 'react-redux';
 import DisconnectedState from '../DisconnectedState';
 import ConnectedState from '../ConnectedState';
 import LoadingState from '../LoadingState';
+import HelpScreen from '../HelpScreen';
 
 class Navigation extends Component {
   render() {
     if (this.props.device === null) return (<DisconnectedState />);
     else if (this.props.connecting) return (<LoadingState />);
-    else return (<ConnectedState />)
+    else return (<HelpScreen />)
   }
 }
 

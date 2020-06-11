@@ -23,4 +23,4 @@ export const styles = StyleSheet.create({
     fontSize: 25,
     marginBottom: 15
   }
-})
+});
