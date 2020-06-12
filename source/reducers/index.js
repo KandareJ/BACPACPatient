@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux';
 import { ADD_DEVICE, FINISH_CONNECTING, REMOVE_DEVICE } from '../actions';
 
-const addedDeviceReducer = (last = null, action) => {
+export const addedDeviceReducer = (last = null, action) => {
   if (action.type === ADD_DEVICE) {
     return action.payload
   }
@@ -11,7 +11,7 @@ const addedDeviceReducer = (last = null, action) => {
   else return last;
 };
 
-const finishConnectingReducer = (last = true, action) => {
+export const finishConnectingReducer = (last = true, action) => {
   if (action.type === FINISH_CONNECTING) return false;
   else if (action.type === REMOVE_DEVICE) {
     return true;
