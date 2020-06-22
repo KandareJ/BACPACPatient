@@ -47,7 +47,7 @@ class ConnectedState extends Component {
         let time = Date.now();
         AsyncStorage.setItem(`lastPush`, JSON.stringify(time));
         this.setState({lastPush: time});
-        callback();
+        setTimeout(callback, 1000);
       });
     });
 
@@ -62,7 +62,7 @@ class ConnectedState extends Component {
         let time = Date.now();
         AsyncStorage.setItem(`lastSync`, JSON.stringify(time));
         this.setState({lastSync: time});
-        callback();
+        setTimeout(callback, 1000);
       });
     //});
   }
