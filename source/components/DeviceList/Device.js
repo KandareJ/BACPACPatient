@@ -13,6 +13,7 @@ class Device extends Component {
   }
 
   devicePress() {
+    this.props.BLE.connect();
     this.props.selectDevice(this.props.device.id, this.props.device.name);
   }
 
@@ -29,7 +30,9 @@ class Device extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    BLE: state.BLE
+  };
 }
 
 export default connect(mapStateToProps, { selectDevice })(Device);

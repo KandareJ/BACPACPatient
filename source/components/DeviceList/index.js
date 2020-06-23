@@ -1,25 +1,39 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
+import { connect } from 'react-redux';
 
 import Device from './Device';
 import { styles } from './styles';
 
-export default class DeviceList extends Component {
-  constructor() {
-    super();
-    this.devices = [
-      { name: "BacPac Device 1", id: "1234-5678-90ab" },
-      { name: "BacPac Device 2", id: "1234-5678-90ac" },
-      { name: "BacPac Device 3", id: "1234-5678-90ad" },
-      { name: "BacPac Device 4", id: "1234-5678-90ae" },
-      { name: "BacPac Device 5", id: "1234-5678-90af" },
-    ];
+class DeviceList extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {};
+
+    this.deviceFound = this.deviceFound.bind(this);
+    if (props.BLE) this.props.BLE.scan(this.deviceFound);
   }
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.BLE !== this.props.BLE) {
+      this.props.BLE.scan(this.deviceFound);
+    }
+  }
+
+  deviceFound(error, device) {
+    if (error) console.log(error);
+    else if (!(device.id in this.state) && device.name) {
+      console.log(device.id, device.name);
+      this.setState({...this.state, [device.id]: device});
+    }
+    //this.props.BLE.connect();
+  }
+
+//return (<Device device={device} key={device.id} />);
   listDevices() {
-    return this.devices.map((device) => {
-      return (<Device device={device} key={device.id} />);
-    });
+    return Object.keys(this.state).map((key) => {
+      return (<Device device={this.state[key]} key={key} />);
+    })
   }
 
   render() {
@@ -32,3 +46,11 @@ export default class DeviceList extends Component {
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    BLE: state.BLE
+  };
+}
+
+export default connect(mapStateToProps)(DeviceList);

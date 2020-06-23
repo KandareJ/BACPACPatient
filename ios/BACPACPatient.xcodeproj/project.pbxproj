@@ -20,6 +20,7 @@
 		5F0AAA3E6CA020F9D9F5F256 /* libPods-BACPACPatient-BACPACPatientTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 21F86E9C0CEF36DEDEAAB198 /* libPods-BACPACPatient-BACPACPatientTests.a */; };
 		71F51C6417052CB1F56365EA /* libPods-BACPACPatient-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9C09D8FAB41AD955D4ADE83 /* libPods-BACPACPatient-tvOS.a */; };
 		C62B7F8A4FC21D7CD0326C4E /* libPods-BACPACPatient.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5B16F7FA5819114D02AA5AF3 /* libPods-BACPACPatient.a */; };
+		CA70587124A283040028F694 /* BLE.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA70587024A283040028F694 /* BLE.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		588D680C9E63D3A7506BE979 /* Pods-BACPACPatient-BACPACPatientTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BACPACPatient-BACPACPatientTests.release.xcconfig"; path = "Target Support Files/Pods-BACPACPatient-BACPACPatientTests/Pods-BACPACPatient-BACPACPatientTests.release.xcconfig"; sourceTree = "<group>"; };
 		5B16F7FA5819114D02AA5AF3 /* libPods-BACPACPatient.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BACPACPatient.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60390BD28A3DB7A677E67467 /* Pods-BACPACPatient-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BACPACPatient-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-BACPACPatient-tvOSTests/Pods-BACPACPatient-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CA70586F24A283040028F694 /* BACPACPatient-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BACPACPatient-Bridging-Header.h"; sourceTree = "<group>"; };
+		CA70587024A283040028F694 /* BLE.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLE.swift; sourceTree = "<group>"; };
 		D08F20878F9E09B11441D100 /* Pods-BACPACPatient.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BACPACPatient.release.xcconfig"; path = "Target Support Files/Pods-BACPACPatient/Pods-BACPACPatient.release.xcconfig"; sourceTree = "<group>"; };
 		E3FBB247A99E12C7EBDF59AE /* Pods-BACPACPatient-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BACPACPatient-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-BACPACPatient-tvOSTests/Pods-BACPACPatient-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB3D1AF6FA4E9CE02E15306B /* Pods-BACPACPatient-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BACPACPatient-tvOS.release.xcconfig"; path = "Target Support Files/Pods-BACPACPatient-tvOS/Pods-BACPACPatient-tvOS.release.xcconfig"; sourceTree = "<group>"; };
@@ -159,12 +162,14 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				CA70587024A283040028F694 /* BLE.swift */,
 				13B07FAE1A68108700A75B9A /* BACPACPatient */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* BACPACPatientTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				D2FEF1E86B8A6AF6F3ABD0B6 /* Pods */,
+				CA70586F24A283040028F694 /* BACPACPatient-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -194,7 +199,6 @@
 				60390BD28A3DB7A677E67467 /* Pods-BACPACPatient-tvOSTests.debug.xcconfig */,
 				E3FBB247A99E12C7EBDF59AE /* Pods-BACPACPatient-tvOSTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -292,7 +296,8 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						DevelopmentTeam = 7N25MM3X97;
+						LastSwiftMigration = 1150;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -531,6 +536,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				CA70587124A283040028F694 /* BLE.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -584,6 +590,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0F3C254E9410CC2725DFCD81 /* Pods-BACPACPatient-BACPACPatientTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -607,6 +614,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 588D680C9E63D3A7506BE979 /* Pods-BACPACPatient-BACPACPatientTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = BACPACPatientTests/Info.plist;
@@ -630,6 +638,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7N25MM3X97;
 				ENABLE_BITCODE = NO;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"$(inherited)",
@@ -644,6 +653,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = BACPACPatient;
+				SWIFT_OBJC_BRIDGING_HEADER = "BACPACPatient-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -657,6 +667,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 7N25MM3X97;
 				INFOPLIST_FILE = BACPACPatient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
@@ -666,6 +677,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = BACPACPatient;
+				SWIFT_OBJC_BRIDGING_HEADER = "BACPACPatient-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

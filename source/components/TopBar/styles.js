@@ -15,7 +15,8 @@ export const styles = StyleSheet.create({
     shadowColor: 'black',
     shadowRadius: 4,
     shadowOffset: { width: 0, height: 5 },
-    shadowOpacity: .3
+    shadowOpacity: .3,
+    zIndex: 1
   },
   title: {
     color: 'white',
