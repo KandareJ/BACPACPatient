@@ -3,7 +3,7 @@ import { BleManager } from 'react-native-ble-plx';
 export default class BLEProxy {
   // public
   constructor() {
-    this.manager = new BleManager();
+    //this.manager = new BleManager();
   }
 
   loggy() {

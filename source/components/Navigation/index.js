@@ -8,7 +8,7 @@ import DisconnectedState from '../DisconnectedState';
 import ConnectedState from '../ConnectedState';
 import LoadingState from '../LoadingState';
 import HelpScreen from '../HelpScreen';
-import { removeDevice } from '../../actions';
+import { removeDevice, createBLEProxy } from '../../actions';
 import { styles } from './styles';
 
 const Drawer = createDrawerNavigator();
@@ -18,6 +18,7 @@ class Navigation extends Component {
   constructor(props) {
     super(props);
     this.drawerContent = this.drawerContent.bind(this);
+    this.props.createBLEProxy();
   }
 
   drawerContent(props) {
@@ -51,4 +52,4 @@ const mapStateToProps = (state) => {
   };
 }
 
-export default connect(mapStateToProps, { removeDevice })(Navigation);
+export default connect(mapStateToProps, { removeDevice, createBLEProxy })(Navigation);

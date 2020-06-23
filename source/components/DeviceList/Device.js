@@ -29,7 +29,8 @@ class Device extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+  };
 }
 
 export default connect(mapStateToProps, { selectDevice })(Device);
