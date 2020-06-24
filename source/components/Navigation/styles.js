@@ -8,3 +8,9 @@ export const styles = StyleSheet.create({
     backgroundColor: 'white'
   }
 });
+
+export const drawerOptions = {
+  overlayColor: 'rgb(70,100,140)',
+  drawerType: 'front',
+  initialRouteName: 'BACPAC'
+};

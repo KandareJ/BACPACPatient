@@ -9,7 +9,7 @@ import ConnectedState from '../ConnectedState';
 import LoadingState from '../LoadingState';
 import HelpScreen from '../HelpScreen';
 import { removeDevice, createBLEProxy } from '../../actions';
-import { styles } from './styles';
+import { styles, drawerOptions } from './styles';
 
 const Drawer = createDrawerNavigator();
 
@@ -24,7 +24,7 @@ class Navigation extends Component {
   drawerContent(props) {
     return (
       <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props} />
+        <DrawerItemList {...props} activeTintColor={drawerOptions.overlayColor} />
         <DrawerItem label="Disconnect" onPress={this.props.removeDevice} />
         <DrawerItem label="Report Issue" onPress={() => Linking.openURL(`mailto:support@BACPAC.org?subject=${this.props.device.uuid}`)} />
       </DrawerContentScrollView>
@@ -36,7 +36,7 @@ class Navigation extends Component {
     else if (this.props.connecting) return (<LoadingState />);
     else return (
       <NavigationContainer>
-        <Drawer.Navigator drawerStyle={styles.drawer} drawerContent={this.drawerContent} drawerType="front" initialRouteName="BACPAC">
+        <Drawer.Navigator drawerStyle={styles.drawer} drawerContent={this.drawerContent} drawerType={drawerOptions.drawerType} initialRouteName={drawerOptions.initialRouteName} >
           <Drawer.Screen name="BACPAC" component={ConnectedState} />
           <Drawer.Screen name="Help" component={HelpScreen} />
         </Drawer.Navigator>
