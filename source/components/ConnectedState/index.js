@@ -70,7 +70,7 @@ class ConnectedState extends Component {
   render() {
     return (
       <View style={styles.bgView}>
-        <TopBar title={this.props.device.name} onMenuPress={this.props.navigation.toggleDrawer} />
+        <TopBar title={"BACPAC"} onMenuPress={this.props.navigation.toggleDrawer} />
         <Image style={styles.image} source={require('../../../assets/img/BackHarnessWoman.png')} />
         <View style={styles.textView}>
           <Text style={styles.text}>{this.props.device.name}</Text>

@@ -11,7 +11,10 @@ class DeviceList extends Component {
     this.state = {};
 
     this.deviceFound = this.deviceFound.bind(this);
-    if (props.BLE) this.props.BLE.scan(this.deviceFound);
+  }
+
+  componentDidMount() {
+    if (this.props.BLE) this.props.BLE.scan(this.deviceFound);
   }
 
   componentDidUpdate(prevProps) {
