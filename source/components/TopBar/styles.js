@@ -4,33 +4,35 @@ export const { width } = Dimensions.get('window')
 
 export const styles = StyleSheet.create({
   bar: {
-    position: 'absolute',
-    left: 0,
-    top: 0,
     width,
-    height: 90,
+    height: 70,
     backgroundColor: 'rgb(70,100,140)',
-    alignItems: 'center',
-    justifyContent: 'flex-end',
+    flexDirection: 'row',
     shadowColor: 'black',
-    shadowRadius: 4,
-    shadowOffset: { width: 0, height: 5 },
+    shadowRadius: 3,
+    shadowOffset: { width: 0, height: 6 },
     shadowOpacity: .3,
     zIndex: 1
   },
   title: {
     color: 'white',
     fontWeight: 'bold',
-    fontSize: 25,
-    marginBottom: 15
+    fontSize: 25
   },
   image: {
     width: 23,
     height: 23
   },
   imageContainer: {
-    position: 'absolute',
-    left: 25,
-    top: 47
+  },
+  sideSpace: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  },
+  centerSpace: {
+    flex: 3,
+    justifyContent: 'center',
+    alignItems: 'center'
   }
 });
