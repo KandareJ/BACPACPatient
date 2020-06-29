@@ -1,33 +1,18 @@
 import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
-  screenView: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    width: '100%',
-  },
-  topSection: {
-    backgroundColor: 'rgb(70,100,140)',
-    width: '100%'
-  },
-  bottomSection: {
-    backgroundColor: 'white',
-    width: '100%'
-  },
   bgView: {
     alignItems: 'center',
-    flex: 1,
-    justifyContent: 'center',
-    width: '100%',
-    backgroundColor: 'white'
+    backgroundColor: 'white',
+    flex: 1
   },
   image: {
-    width: '100%',
-    resizeMode: 'contain'
+    resizeMode: 'contain',
+    flex: 1,
+    marginTop: 10
   },
   button: {
-    marginTop: 50,
+    marginTop: 30,
     backgroundColor: 'rgb(70,100,140)',
     height: 70,
     width: '60%',
@@ -43,7 +28,7 @@ export const styles = StyleSheet.create({
     marginBottom: 70
   },
   buttonPress: {
-    marginTop: 50,
+    marginTop: 30,
     backgroundColor: 'rgb(70,100,140)',
     height: 70,
     width: '60%',
@@ -60,7 +45,6 @@ export const styles = StyleSheet.create({
   },
   textView: {
     marginTop: 10,
-    width: '75%'
   },
   text: {
     fontSize: 20,

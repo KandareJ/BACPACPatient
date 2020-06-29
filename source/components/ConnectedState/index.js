@@ -69,26 +69,19 @@ class ConnectedState extends Component {
 
   render() {
     return (
-      <View style={styles.screenView}>
-        <SafeAreaView style={styles.topSection}/>
-        <SafeAreaView style={styles.screenView}>
-          <TopBar title={"BACPAC"} onMenuPress={this.props.navigation.toggleDrawer} />
-          <View style={styles.bgView}>
-            <Image style={styles.image} source={require('../../../assets/img/BackHarnessWoman.png')} />
-            <View style={styles.textView}>
-              <Text style={styles.text}>{this.props.device.name}</Text>
-              <Text style={styles.text}>Battery:<Text style={styles.textNotBold}> {this.state.battery}%</Text></Text>
-              <Text style={styles.text}>Storage:<Text style={styles.textNotBold}> {this.state.storage}%</Text></Text>
-              <Text style={styles.text}>Last Sync:<Text style={styles.textNotBold}> {toRelativeTime(this.state.lastSync, Date.now())}</Text></Text>
-              <Text style={styles.text}>Last Push:<Text style={styles.textNotBold}> {toRelativeTime(this.state.lastPush, Date.now())}</Text></Text>
-            </View>
-            <Button push={this.push} sync={this.sync} pos={this.state.lastPush >= this.state.lastSync} />
+      <TopBar title={"BACPAC"} onMenuPress={this.props.navigation.toggleDrawer}>
+        <View style={styles.bgView}>
+          <Image style={styles.image} source={require('../../../assets/img/BackHarnessWoman.png')} />
+          <View style={styles.textView}>
+            <Text style={styles.text}>{this.props.device.name}</Text>
+            <Text style={styles.text}>Battery:<Text style={styles.textNotBold}> {this.state.battery}%</Text></Text>
+            <Text style={styles.text}>Storage:<Text style={styles.textNotBold}> {this.state.storage}%</Text></Text>
+            <Text style={styles.text}>Last Sync:<Text style={styles.textNotBold}> {toRelativeTime(this.state.lastSync, Date.now())}</Text></Text>
+            <Text style={styles.text}>Last Push:<Text style={styles.textNotBold}> {toRelativeTime(this.state.lastPush, Date.now())}</Text></Text>
           </View>
-        </SafeAreaView>
-        <SafeAreaView style={styles.bottomSection} />
-
-
-	    </View>
+          <Button push={this.push} sync={this.sync} pos={this.state.lastPush >= this.state.lastSync} />
+        </View>
+      </TopBar>
 	  );
   }
 

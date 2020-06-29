@@ -3,6 +3,16 @@ import { Dimensions, StyleSheet } from 'react-native';
 export const { width } = Dimensions.get('window')
 
 export const styles = StyleSheet.create({
+  screenView: {
+    width: '100%',
+    flex: 1
+  },
+  topSection: {
+    backgroundColor: 'rgb(70,100,140)',
+  },
+  bottomSection: {
+    backgroundColor: 'red',// 'white',
+  },
   bar: {
     width,
     height: 70,
@@ -34,5 +44,8 @@ export const styles = StyleSheet.create({
     flex: 3,
     justifyContent: 'center',
     alignItems: 'center'
+  },
+  children: {
+    flex: 1
   }
 });
