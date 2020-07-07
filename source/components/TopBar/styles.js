@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgb(70,100,140)',
   },
   bottomSection: {
-    backgroundColor: 'red',// 'white',
+    backgroundColor:  'white',
   },
   bar: {
     width,
