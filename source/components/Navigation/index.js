@@ -11,6 +11,7 @@ import HelpScreen from '../HelpScreen';
 import { removeDevice, createBLEProxy } from '../../actions';
 import { report, disconnect, help, home } from './icon';
 import { styles, drawerOptions } from './styles';
+import TestPreview from '../TestPreview';
 
 const Drawer = createDrawerNavigator();
 
@@ -52,7 +53,7 @@ class Navigation extends Component {
   }
 
   render() {
-    if (this.props.device === null) return (<DisconnectedState />);
+    if (this.props.device === null) return /*<DisconnectedState />*/(<TestPreview />);
     else if (this.props.connecting) return (<LoadingState />);
     else return (
       <NavigationContainer>
