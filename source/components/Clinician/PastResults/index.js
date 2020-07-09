@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, ScrollView } from 'react-native';
 
+import TopBar from '../../TopBar';
 import Result from './Result';
 import { styles } from './styles';
 
@@ -14,17 +15,24 @@ const dummyData = [
 ]
 
 export default class PastResults extends Component {
+  constructor(props) {
+    super(props);
+    this.renderResults = this.renderResults.bind(this);
+  }
+
   renderResults() {
-    return dummyData.map((result) => <Result key={result} timestamp={result} />)
+    return dummyData.map((result) => <Result key={result} timestamp={result} navigation={this.props.navigation} />)
   }
 
   render() {
     return (
-      <View style={styles.bg}>
-        <ScrollView style={styles.scroll}>
-          {this.renderResults()}
-        </ScrollView>
-      </View>
+      <TopBar title={"Past Results"}>
+        <View style={styles.bg}>
+          <ScrollView style={styles.scroll}>
+            {this.renderResults()}
+          </ScrollView>
+        </View>
+      </TopBar>
     );
   }
 }

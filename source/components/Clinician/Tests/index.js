@@ -10,7 +10,7 @@ import { testDescriptions } from './testDescriptions';
 
 export default class Tests extends Component {
   renderTestSelectors() {
-    return testDescriptions.map((t) => <TestSelector key={t.title} test={t} />);
+    return testDescriptions.map((t) => <TestSelector key={t.title} test={t} navigation={this.props.navigation} />);
   }
 
   render() {
