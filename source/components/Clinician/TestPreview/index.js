@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, Button as PlainButton } from 'react-native';
 import Video from 'react-native-video';
 
-import Button from '../Button';
+import Button from '../../Button';
 import { styles } from './styles';
 
 export default class TestPreview extends Component {
@@ -13,7 +13,7 @@ export default class TestPreview extends Component {
         <View style={styles.video}>
           <Video
             ref={(ref: Video) => { this.video = ref }}
-            source={require("../../../assets/bear.mp4")}
+            source={require("../../../../assets/vid/bear.mp4")}
             style={{flex: 1}}
             controls={true}
           />

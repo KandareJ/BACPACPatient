@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, Image } from 'react-native';
 
-import Button from '../Button';
+import Button from '../../Button';
 import { styles } from './styles';
 import { testDescriptions } from '../Tests/testDescriptions';
 

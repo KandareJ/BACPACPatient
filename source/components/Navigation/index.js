@@ -6,11 +6,13 @@ import { NavigationContainer } from '@react-navigation/native';
 
 import DisconnectedState from '../DisconnectedState';
 import ConnectedState from '../ConnectedState';
+import ClinicianConnectedState from '../Clinician/ClinicianConnectedState';
 import LoadingState from '../LoadingState';
 import HelpScreen from '../HelpScreen';
 import { removeDevice, createBLEProxy } from '../../actions';
 import { report, disconnect, help, home } from './icon';
 import { styles, drawerOptions } from './styles';
+import { patient } from '../../utils/config';
 
 const Drawer = createDrawerNavigator();
 
@@ -51,15 +53,24 @@ class Navigation extends Component {
     );
   }
 
+  clinicianPatient() {
+    if (patient) {
+      return (
+        <Drawer.Navigator drawerStyle={styles.drawer} drawerContent={this.drawerContent} drawerType={drawerOptions.drawerType} initialRouteName={drawerOptions.initialRouteName} >
+          <Drawer.Screen name="BACPAC" component={ConnectedState} />
+          <Drawer.Screen name="Help" component={HelpScreen} />
+        </Drawer.Navigator>
+      );
+    }
+    else return (<ClinicianConnectedState />);
+  }
+
   render() {
     if (this.props.device === null) return (<DisconnectedState />);
     else if (this.props.connecting) return (<LoadingState />);
     else return (
       <NavigationContainer>
-        <Drawer.Navigator drawerStyle={styles.drawer} drawerContent={this.drawerContent} drawerType={drawerOptions.drawerType} initialRouteName={drawerOptions.initialRouteName} >
-          <Drawer.Screen name="BACPAC" component={ConnectedState} />
-          <Drawer.Screen name="Help" component={HelpScreen} />
-        </Drawer.Navigator>
+        {this.clinicianPatient()}
       </NavigationContainer>
     );
   }
