@@ -34,6 +34,8 @@ export const styles = StyleSheet.create({
     height: 23
   },
   imageContainer: {
+    flexDirection: 'row',
+    alignItems: 'center'
   },
   sideSpace: {
     flex: 1,
@@ -47,5 +49,10 @@ export const styles = StyleSheet.create({
   },
   children: {
     flex: 1
+  },
+  iconText: {
+    fontSize: 20,
+    color: 'white',
+    fontWeight: '500'
   }
 });

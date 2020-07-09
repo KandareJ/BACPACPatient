@@ -17,9 +17,12 @@ export default class TopBar extends Component {
       );
     }
     else if (this.props.back) {
-      <TouchableOpacity style={styles.imageContainer} onPress={this.props.back}>
-        <Image style={styles.image} source={require('../../../assets/icons/arrow_back_ios.png')} />
-      </TouchableOpacity>
+      return(
+        <TouchableOpacity style={styles.imageContainer} onPress={this.props.back}>
+          <Image style={styles.image} source={require('../../../assets/icons/arrow_back_ios.png')} />
+          <Text style={styles.iconText}>Back</Text>
+        </TouchableOpacity>
+      );
     }
   }
 

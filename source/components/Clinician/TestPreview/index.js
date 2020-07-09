@@ -12,6 +12,7 @@ export default class TestPreview extends Component {
 
     this.continue = this.continue.bind(this);
     this.past = this.past.bind(this);
+    this.back = this.back.bind(this);
   }
 
   continue() {
@@ -22,9 +23,13 @@ export default class TestPreview extends Component {
     this.props.navigation.navigate('PastResults');
   }
 
+  back() {
+    this.props.navigation.pop();
+  }
+
   render() {
     return (
-      <TopBar title={"Test Preview"}>
+      <TopBar title={"Test Preview"} back={this.back}>
         <View style={styles.bg}>
           <View style={styles.video}>
             <Video

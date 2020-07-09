@@ -18,6 +18,11 @@ export default class PastResults extends Component {
   constructor(props) {
     super(props);
     this.renderResults = this.renderResults.bind(this);
+    this.back = this.back.bind(this);
+  }
+
+  back() {
+    this.props.navigation.pop();
   }
 
   renderResults() {
@@ -26,7 +31,7 @@ export default class PastResults extends Component {
 
   render() {
     return (
-      <TopBar title={"Past Results"}>
+      <TopBar title={"Past Results"} back={this.back}>
         <View style={styles.bg}>
           <ScrollView style={styles.scroll}>
             {this.renderResults()}
