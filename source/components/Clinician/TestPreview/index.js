@@ -13,14 +13,16 @@ export default class TestPreview extends Component {
     this.continue = this.continue.bind(this);
     this.past = this.past.bind(this);
     this.back = this.back.bind(this);
+
+    this.test = this.props.route.params.test;
   }
 
   continue() {
-    this.props.navigation.navigate('Test');
+    this.props.navigation.push('Test', { test: this.test });
   }
 
   past() {
-    this.props.navigation.navigate('PastResults');
+    this.props.navigation.push('PastResults', { test: this.test });
   }
 
   back() {
@@ -28,13 +30,14 @@ export default class TestPreview extends Component {
   }
 
   render() {
+
     return (
-      <TopBar title={"Test Preview"} back={this.back}>
+      <TopBar title={`${this.test.title} - Preview`} back={this.back}>
         <View style={styles.bg}>
           <View style={styles.video}>
             <Video
               ref={(ref: Video) => { this.video = ref }}
-              source={require("../../../../assets/vid/bear.mp4")}
+              source={this.test.video}
               style={{flex: 1}}
               controls={true}
             />

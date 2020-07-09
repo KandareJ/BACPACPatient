@@ -15,7 +15,7 @@ export default class Tests extends Component {
 
   render() {
     return (
-      <TopBar title="Tests">
+      <TopBar title="Exercises">
       <View style={styles.bg}>
         <ScrollView style={styles.scroll}>
           {this.renderTestSelectors()}

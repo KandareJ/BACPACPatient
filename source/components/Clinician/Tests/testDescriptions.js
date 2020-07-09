@@ -1,17 +1,17 @@
 export const testDescriptions = [
   {
-    title: "Box Test",
-    video: require("../../../../assets/vid/bear.mp4"),
-    image: require("../../../../assets/img/BackExtension.jpg")
+    title: "Squat",
+    video: require("../../../../assets/vid/Squat.mp4"),
+    image: require("../../../../assets/img/Squat.png")
   },
   {
-    title: "Box Test 2",
-    video: require("../../../../assets/vid/bear.mp4"),
-    image: require("../../../../assets/img/BackExtension.jpg")
+    title: "Lunge",
+    video: require("../../../../assets/vid/Lunge.mp4"),
+    image: require("../../../../assets/img/Lunge.png")
   },
   {
-    title: "Box Test 3",
-    video: require("../../../../assets/vid/bear.mp4"),
-    image: require("../../../../assets/img/BackExtension.jpg")
+    title: "Row",
+    video: require("../../../../assets/vid/Row.mp4"),
+    image: require("../../../../assets/img/Row.png")
   }
 ];

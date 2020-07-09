@@ -1,4 +1,6 @@
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Dimensions } from 'react-native';
+export const { width } = Dimensions.get('window');
+const margin = 20;
 
 export const styles = StyleSheet.create({
   bg: {
@@ -11,20 +13,31 @@ export const styles = StyleSheet.create({
     width: '100%'
   },
   selector: {
-    backgroundColor: 'white',
-    height: 100,
+    backgroundColor: '#f0f0f0',
     marginVertical: 15,
     borderRadius: 20,
+    height: 360,
     shadowColor: 'black',
     shadowRadius: 5,
     shadowOffset: { width: 5, height: 5 },
     shadowOpacity: .4,
-    marginHorizontal: 20,
+    marginHorizontal: margin,
     alignItems: 'center',
     justifyContent: 'center'
   },
   selectorText: {
     fontSize: 25,
     fontWeight: '400'
+  },
+  selectorTextWrapper: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    flex: 1
+  },
+  image: {
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
+    width: width-2*margin,
+    height: 300
   }
 });

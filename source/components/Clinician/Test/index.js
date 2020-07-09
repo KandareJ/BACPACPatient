@@ -10,6 +10,7 @@ export default class Test extends Component {
   constructor(props) {
     super(props);
     this.back = this.back.bind(this);
+    this.test = this.props.route.params.test;
   }
 
   back() {
@@ -18,9 +19,9 @@ export default class Test extends Component {
 
   render() {
     return (
-      <TopBar title={"Test"} back={this.back}>
+      <TopBar title={this.test.title} back={this.back}>
         <View style={styles.bg}>
-          <Image source={testDescriptions[0].image} style={styles.image}/>
+          <Image source={this.test.image} style={styles.image}/>
           <View style={styles.button}>
             <Button text={"Start"} />
           </View>
