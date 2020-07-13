@@ -11,11 +11,11 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgb(70,100,140)',
   },
   bottomSection: {
-    backgroundColor:  'white',
+    backgroundColor:  null,
   },
   bar: {
     width,
-    height: 70,
+    height: 60,
     backgroundColor: 'rgb(70,100,140)',
     flexDirection: 'row',
     shadowColor: 'black',
