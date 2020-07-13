@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     marginVertical: 15,
     borderRadius: 20,
-    height: 360,
+    height: 310,
     shadowColor: 'black',
     shadowRadius: 5,
     shadowOffset: { width: 5, height: 5 },
@@ -38,6 +38,6 @@ export const styles = StyleSheet.create({
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
     width: width-2*margin,
-    height: 300
+    height: 250
   }
 });
