@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image, TextInput } from 'react-native';
+import { View, Image, TextInput, Alert } from 'react-native';
 
 import TopBar from '../../TopBar';
 import Button from '../../Button';
@@ -32,7 +32,20 @@ export default class Test extends Component {
   }
 
   finish() {
-    this.props.navigation.push('Results', { test: this.test });
+    Alert.alert('Finish Exercise',
+    '',
+    [
+      {
+        text: "Cancel",
+        style: "cancel"
+      },
+      {
+        text: "Finish",
+        onPress: () => {
+          this.props.navigation.push('Results', { test: this.test });
+        }
+      }
+    ]);
   }
 
   button() {

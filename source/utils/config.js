@@ -1,2 +1,2 @@
-export const patient = false;
-export const imageList = true;
+export const patient = true;
+export const imageList = false;
