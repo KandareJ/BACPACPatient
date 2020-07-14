@@ -63,7 +63,7 @@ export default class TestPreview extends Component {
               />
             </View>
             <View style={styles.button}>
-              <Button text={"Continue"} onPress={this.continue}/>
+              <Button text={"Start Exercise"} onPress={this.continue}/>
             </View>
             <PlainButton titleStyle={styles.plainButton} title="Past Results" onPress={this.past}/>
           </View>
