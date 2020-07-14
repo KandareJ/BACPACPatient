@@ -25,6 +25,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center'
   },
+  selectorNoImage: {
+    height: 80,
+  },
   selectorText: {
     fontSize: 25,
     fontWeight: '400'
