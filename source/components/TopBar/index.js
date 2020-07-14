@@ -24,6 +24,13 @@ export default class TopBar extends Component {
         </TouchableOpacity>
       );
     }
+    /*else if (this.props.left) {
+      return(
+        <TouchableOpacity style={styles.imageContainer} onPress={this.props.back}>
+          {this.props.left}
+        </TouchableOpacity>
+      );
+    }*/
   }
 
   render() {
