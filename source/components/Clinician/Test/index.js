@@ -11,12 +11,8 @@ export default class Test extends Component {
     super(props);
     this.back = this.back.bind(this);
     this.test = this.props.route.params.test;
-  }
 
-  componentDidMount() {
-    console.log(this.props.navigation);
-    this.props.navigation.addListener('beforeRemove', (e) => {
-      e.preventDefault();
+    props.navigation.addListener('focus', (e) => {
       console.log("stopped");
     });
   }
