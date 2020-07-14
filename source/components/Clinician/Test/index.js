@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, TextInput } from 'react-native';
 
 import TopBar from '../../TopBar';
 import Button from '../../Button';
@@ -13,8 +13,16 @@ export default class Test extends Component {
     this.test = this.props.route.params.test;
   }
 
+  componentDidMount() {
+    console.log(this.props.navigation);
+    this.props.navigation.addListener('beforeRemove', (e) => {
+      e.preventDefault();
+      console.log("stopped");
+    });
+  }
+
   back() {
-    this.props.navigation.pop();
+    this.props.navigation.popToTop();
   }
 
   render() {

@@ -8,11 +8,20 @@ export const styles = StyleSheet.create({
   bg: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    width: '100%'
   },
    video: {
-     width: width*.8,
-     height: width*.8*aspectRatio,
-     marginVertical: 30
+     width: width*.95,
+     height: 300,//width*.95*aspectRatio,
+   },
+   button: {
+     width: '100%',
+     alignItems: 'center',
+     marginTop:100,
+     marginBottom: 30
+   },
+   plainButton: {
+     fontSize: 2
    }
 });

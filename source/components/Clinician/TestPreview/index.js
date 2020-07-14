@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, Button as PlainButton } from 'react-native';
+import { View, Text, Button as PlainButton, Alert } from 'react-native';
 import Video from 'react-native-video';
 
 import TopBar from '../../TopBar';
@@ -10,6 +10,10 @@ export default class TestPreview extends Component {
   constructor(props) {
     super(props);
 
+    this.state = {
+      paused: false
+    }
+
     this.continue = this.continue.bind(this);
     this.past = this.past.bind(this);
     this.back = this.back.bind(this);
@@ -18,7 +22,22 @@ export default class TestPreview extends Component {
   }
 
   continue() {
-    this.props.navigation.push('Test', { test: this.test });
+    Alert.alert(
+      `${this.test.title}`,
+      `I confirm that I understand how to do the ${this.test.title} exercise`,
+      [
+        {
+          text: "Review",
+          style: "cancel"
+        },
+        {
+          text: "Confirm",
+          onPress: () => {
+            this.setState({ paused: true });
+            this.props.navigation.push('Test', { test: this.test });
+          }
+        }
+      ]);
   }
 
   past() {
@@ -34,17 +53,20 @@ export default class TestPreview extends Component {
     return (
       <TopBar title={`${this.test.title} - Preview`} back={this.back}>
         <View style={styles.bg}>
-          <View style={styles.video}>
-            <Video
-              ref={(ref: Video) => { this.video = ref }}
-              source={this.test.video}
-              style={{flex: 1}}
-              controls={true}
-            />
+            <View style={styles.video}>
+              <Video
+                ref={(ref: Video) => { this.video = ref }}
+                source={this.test.video}
+                style={{flex: 1}}
+                controls={true}
+                paused={this.state.paused}
+              />
+            </View>
+            <View style={styles.button}>
+              <Button text={"Continue"} onPress={this.continue}/>
+            </View>
+            <PlainButton titleStyle={styles.plainButton} title="Past Results" onPress={this.past}/>
           </View>
-          <Button text={"Continue"} onPress={this.continue}/>
-          <PlainButton title="Past Results" onPress={this.past}/>
-        </View>
       </TopBar>
     );
   }
