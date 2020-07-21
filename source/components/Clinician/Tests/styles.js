@@ -16,31 +16,30 @@ export const styles = StyleSheet.create({
     backgroundColor: '#f0f0f0',
     marginVertical: 15,
     borderRadius: 20,
-    height: 310,
+    height: 80,
     shadowColor: 'black',
     shadowRadius: 5,
     shadowOffset: { width: 5, height: 5 },
     shadowOpacity: .4,
     marginHorizontal: margin,
     alignItems: 'center',
-    justifyContent: 'center'
-  },
-  selectorNoImage: {
-    height: 80,
+    flexDirection: 'row'
   },
   selectorText: {
     fontSize: 25,
     fontWeight: '400'
   },
   selectorTextWrapper: {
-    alignItems: 'center',
-    justifyContent: 'center',
+    marginLeft: 20,
     flex: 1
   },
-  image: {
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    width: width-2*margin,
-    height: 250
+  selectorSubtext: {
+    fontSize: 14,
+    fontWeight: '200'
+  },
+  icon: {
+    width: 40,
+    height: 40,
+    marginRight: 20
   }
 });

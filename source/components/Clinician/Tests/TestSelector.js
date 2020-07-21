@@ -15,21 +15,25 @@ export default class TestSelector extends Component {
   }
 
   generateItem() {
-    if (imageList) {
+    if(this.props.test.time === '20 minutes ago') {
       return (
-        <View style={styles.selector}>
-          <Image source={this.props.test.image} style={styles.image}/>
+        <View style={{...styles.selector, shadowOpacity: .2}}>
           <View style={styles.selectorTextWrapper}>
-            <Text style={styles.selectorText}>{this.props.test.title}</Text>
+            <Text style={{...styles.selectorText, color: 'gray'}}>{this.props.test.title}</Text>
+            <Text style={styles.selectorSubtext}>Last completed {this.props.test.time}</Text>
+          </View>
+          <View>
+            <Image source={require('../../../../assets/icons/done.png')} style={styles.icon}/>
           </View>
         </View>
       );
     }
     else {
       return (
-        <View style={{...styles.selector, ...styles.selectorNoImage}}>
+        <View style={styles.selector}>
           <View style={styles.selectorTextWrapper}>
             <Text style={styles.selectorText}>{this.props.test.title}</Text>
+            <Text style={styles.selectorSubtext}>Last completed {this.props.test.time}</Text>
           </View>
         </View>
       );
