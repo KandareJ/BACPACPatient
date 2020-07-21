@@ -6,6 +6,14 @@ export default class TopBar extends Component {
   constructor(props) {
     super(props);
     this.leftSide = this.leftSide.bind(this);
+    this.rightSide = this.rightSide.bind(this);
+  }
+
+  rightSide() {
+    if (this.props.right) {
+      const Right = this.props.right;
+      return (<Right />);
+    }
   }
 
   leftSide() {
@@ -45,7 +53,9 @@ export default class TopBar extends Component {
             <View style={styles.centerSpace}>
               <Text style={styles.title}>{this.props.title}</Text>
             </View>
-            <View style={styles.sideSpace} />
+            <View style={styles.sideSpace}>
+              {this.rightSide()}
+            </View>
           </View>
 
           <View style={styles.children}>

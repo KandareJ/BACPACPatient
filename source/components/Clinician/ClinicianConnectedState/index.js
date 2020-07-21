@@ -6,6 +6,7 @@ import Test from '../Test';
 import TestPreview from '../TestPreview';
 import Results from '../Results';
 import PastResults from '../PastResults';
+import Profile from '../Profile';
 
 const Stack = createStackNavigator();
 
@@ -18,6 +19,7 @@ export default class ClinicianConnectedState extends Component {
         <Stack.Screen name="TestPreview" component={TestPreview} />
         <Stack.Screen name="PastResults" component={PastResults} />
         <Stack.Screen name="Results" component={Results} />
+        <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     );
   }
