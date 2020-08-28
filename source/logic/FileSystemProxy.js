@@ -20,3 +20,7 @@ export const read = (callback) => {
 export const deleteFile = (callback) => {
   RNFS.unlink(path).then(callback);
 }
+
+export const uploadFile = (callback) => {
+  
+}

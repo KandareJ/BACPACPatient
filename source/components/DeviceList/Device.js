@@ -13,8 +13,7 @@ class Device extends Component {
   }
 
   devicePress() {
-    this.props.BLE.connect();
-    this.props.selectDevice(this.props.device.id, this.props.device.name);
+    this.props.BLE.connect(this.props.device.id, () => { this.props.selectDevice(this.props.device.id, this.props.device.name); } );
   }
 
   render() {

@@ -34,12 +34,15 @@ export default class BLEProxy {
     }
   }
 
-  connect() {
+  connect(deviceID, callback) {
     if (fakeIt) {
-
+      callback();
     }
     else {
       this.manager.stopDeviceScan();
+      this.manager.connectToDevice(deviceID).then((resp) => {
+        console.log(resp);
+      });
     }
   }
 
