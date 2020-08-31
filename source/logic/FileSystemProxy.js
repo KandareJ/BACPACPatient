@@ -1,6 +1,6 @@
 import * as RNFS from 'react-native-fs';
 
-const path = `${RNFS.DocumentDirectoryPath}/data.csv`;
+const path = `${RNFS.DocumentDirectoryPath}/book.txt`;
 
 export const write = (toWrite, callback) => {
     RNFS.exists(path).then((exists) => {
@@ -19,4 +19,8 @@ export const read = (callback) => {
 
 export const deleteFile = (callback) => {
   RNFS.unlink(path).then(callback);
+}
+
+export const uploadFile = (callback) => {
+
 }

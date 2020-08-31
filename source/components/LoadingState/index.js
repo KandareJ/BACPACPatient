@@ -13,10 +13,11 @@ class LoadingState extends Component {
     setTimeout(this.props.finishConnecting, 2000);
 
     return(
-      <View style={styles.bgView}>
-        <TopBar title={"Establishing Connection"} />
-        <Image style={styles.gif} source={require('../../../assets/img/loading3.gif')} />
-      </View>
+      <TopBar title={"Connecting..."}>
+        <View style={styles.bgView}>
+          <Image style={styles.gif} source={require('../../../assets/img/loading3.gif')} />
+        </View>
+      </TopBar>
     )
   }
 }

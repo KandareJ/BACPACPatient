@@ -1,20 +1,12 @@
 import axios from 'axios';
 
-const url = 'http://localhost:8080/sky/event/6W6tiq8UiVciHHgKVtAox8/eid/new/csv';
-const getURL = 'http://localhost:8080/sky/cloud/6W6tiq8UiVciHHgKVtAox8/csv_test/dummydata';
+const getURL = 'http://www.gutenberg.org/files/61085/61085-0.txt';
 
 export const receiveData = (callback) => {
     axios.get(getURL).then(callback);
-  }
+}
 
+export const upload = () => {
+  const BUCKET = 'BACPAC_TEST';
 
-  export const sendCSV = (csv, callback) => {
-    let formdata = new FormData();
-    formdata.append(csv);
-
-    axios({
-      url,
-      method: post,
-      data: formdata
-    }).then(callback);
-  }
+}
