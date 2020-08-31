@@ -8,7 +8,5 @@ export const receiveData = (callback) => {
 
 export const upload = () => {
   const BUCKET = 'BACPAC_TEST';
-  const IAM_ACCESS_KEY = '';
-  const IAM_ACCESS_SECRET = '';
 
 }
