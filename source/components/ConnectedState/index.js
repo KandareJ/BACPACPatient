@@ -54,17 +54,15 @@ class ConnectedState extends Component {
   }
 
   sync(callback) {
-    //receiveData( (resp) => {
-    let resp = { data: "booboo"};
-      let toWrite = JSON.stringify(resp.data);
-      console.log(toWrite);
-      write(toWrite, () => {
+    receiveData( (resp) => {
+      console.log("got data");
+      write(resp.data, () => {
         let time = Date.now();
         AsyncStorage.setItem(`lastSync`, JSON.stringify(time));
         this.setState({lastSync: time});
-        setTimeout(callback, 1000);
+        callback();
       });
-    //});
+    });
   }
 
   render() {

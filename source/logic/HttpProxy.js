@@ -1,20 +1,14 @@
 import axios from 'axios';
 
-const url = 'http://localhost:8080/sky/event/6W6tiq8UiVciHHgKVtAox8/eid/new/csv';
-const getURL = 'http://localhost:8080/sky/cloud/6W6tiq8UiVciHHgKVtAox8/csv_test/dummydata';
+const getURL = 'http://www.gutenberg.org/files/61085/61085-0.txt';
 
 export const receiveData = (callback) => {
     axios.get(getURL).then(callback);
-  }
+}
 
+export const upload = () => {
+  const BUCKET = 'BACPAC_TEST';
+  const IAM_ACCESS_KEY = 'AKIARUKGOAEXJVEZCGTB';
+  const IAM_ACCESS_SECRET = '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';
 
-  export const sendCSV = (csv, callback) => {
-    let formdata = new FormData();
-    formdata.append(csv);
-
-    axios({
-      url,
-      method: post,
-      data: formdata
-    }).then(callback);
-  }
+}
