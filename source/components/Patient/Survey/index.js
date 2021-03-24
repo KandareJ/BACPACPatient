@@ -1,12 +1,13 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview';
+import TopBar from '../../TopBar';
 
-const Survey = () => {
+const Survey = ({navigation}) => {
     return (
-        <View style={styles.bg}>
-            <WebView source={{ uri: 'http://www.example.com/' }} />
-        </View>
+        <TopBar title={"Survey"} onMenuPress={navigation.toggleDrawer}>
+            <WebView source={{ uri: 'https://byu.az1.qualtrics.com/jfe/form/SV_41Pv4H7zAoepl4y' }} />
+        </TopBar>
     )
 }
 
