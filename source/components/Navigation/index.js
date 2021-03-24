@@ -9,8 +9,9 @@ import ConnectedState from '../ConnectedState';
 import ClinicianConnectedState from '../Clinician/ClinicianConnectedState';
 import LoadingState from '../LoadingState';
 import HelpScreen from '../HelpScreen';
+import Survey from '../Patient/Survey';
 import { removeDevice, createBLEProxy } from '../../actions';
-import { report, disconnect, help, home } from './icon';
+import { report, disconnect, help, home, survey } from './icon';
 import { styles, drawerOptions } from './styles';
 import { patient } from '../../utils/config';
 
@@ -37,6 +38,7 @@ class Navigation extends Component {
             <Text style={styles.sectionTitle}>Screens</Text>
             <View style={styles.sectionBody}>
               <DrawerItem icon={({size}) => this.icon(home, size)} label="BACPAC" onPress={() => {props.navigation.navigate('BACPAC')}} />
+              <DrawerItem icon={({size}) => this.icon(survey, size)} label="Survey" onPress={() => {props.navigation.navigate('Survey')}} />
               <DrawerItem icon={({size}) => this.icon(help, size)} label="Help" onPress={() => {props.navigation.navigate('Help')}} />
             </View>
           </View>
@@ -58,6 +60,7 @@ class Navigation extends Component {
       return (
         <Drawer.Navigator drawerStyle={styles.drawer} drawerContent={this.drawerContent} drawerType={drawerOptions.drawerType} initialRouteName={drawerOptions.initialRouteName} >
           <Drawer.Screen name="BACPAC" component={ConnectedState} />
+          <Drawer.Screen name="Survey" component={Survey} />
           <Drawer.Screen name="Help" component={HelpScreen} />
         </Drawer.Navigator>
       );
