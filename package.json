@@ -19,7 +19,7 @@
     "@react-navigation/native": "^5.5.0",
     "@react-navigation/stack": "^5.6.2",
     "aws-sdk": "^2.871.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "buffer": "^6.0.3",
     "logkitty": "^0.7.1",
     "react": "16.11.0",
