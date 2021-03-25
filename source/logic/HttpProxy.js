@@ -1,12 +1,29 @@
+import AWS from 'aws-sdk';
 import axios from 'axios';
 
-const getURL = 'http://www.gutenberg.org/files/61085/61085-0.txt';
+const BUCKET = 'bacpac';
+const IAM_ACCESS_KEY = '';
+const IAM_ACCESS_SECRET = '';
 
-export const receiveData = (callback) => {
-    axios.get(getURL).then(callback);
-}
+export class s3 {
+  constructor() {
+    AWS.config.update({
+      accessKeyId: IAM_ACCESS_KEY,
+      secretAccessKey: IAM_ACCESS_SECRET,
+      region: "us-west-2"
+    });
+  }
 
-export const upload = () => {
-  const BUCKET = 'BACPAC_TEST';
+  uploadFile = (Key, file, success, failure) => {
+    let upload = new AWS.S3.ManagedUpload({
+        params: {
+          Bucket: BUCKET,
+          Key,
+          Body: file
+        }
+      });
 
+      let promise = upload.promise();
+      promise.then(success, failure);
+  }
 }

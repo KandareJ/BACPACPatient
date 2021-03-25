@@ -1,11 +1,10 @@
 import { BleManager } from 'react-native-ble-plx';
-
-const fakeIt = true;
+import { simulator } from '../utils/config';
 
 export default class BLEProxy {
   // public
   constructor() {
-    if (fakeIt) {
+    if (simulator) {
       // do nothing
     }
     else {
@@ -13,12 +12,11 @@ export default class BLEProxy {
     }
   }
 
-  async scan(callback) {
-    if (fakeIt) {
+  scan = async (callback) => {
+    if (simulator) {
       callback(null, {name: "BACPAC", id: "asdf-ghjk-lmnb"})
     }
     else {
-      console.log("SCANNING");
       const isOn = await this.manager.state();
       if (isOn !== 'PoweredOn') {
         const subscription = this.manager.onStateChange((state) => {
@@ -34,15 +32,28 @@ export default class BLEProxy {
     }
   }
 
-  connect(deviceID, callback) {
-    if (fakeIt) {
+  syncData = async (deviceID, onReceiveData) => {
+    let device = await this.manager.discoverAllServicesAndCharacteristicsForDevice(deviceID);
+    let services = await device.services();
+    let characteristics = await this.manager.characteristicsForDevice(deviceID, services[0].uuid);
+    //let battery = await device.readCharacteristicForService(services[0].uuid, characteristics[0].uuid);
+    this.manager.monitorCharacteristicForDevice(deviceID, services[0].uuid, characteristics[0].uuid, onReceiveData, 'sync');
+  }
+
+  endSync = () => {
+    if (simulator) return;
+    this.manager.cancelTransaction('sync');
+  }
+
+  connect = async (deviceID, callback, onDisconnect) => {
+    if (simulator) {
       callback();
     }
     else {
       this.manager.stopDeviceScan();
-      this.manager.connectToDevice(deviceID).then((resp) => {
-        console.log(resp);
-      });
+      await this.manager.connectToDevice(deviceID);
+      await this.manager.onDeviceDisconnected(deviceID, onDisconnect);
+      callback();
     }
   }
 
