@@ -8,10 +8,11 @@ import DisconnectedState from '../DisconnectedState';
 import ConnectedState from '../ConnectedState/Patient/ConnectedState';
 import ClinicianConnectedState from '../ConnectedState/Clinician/ClinicianConnectedState';
 import Profile from '../ConnectedState/Patient/Profile';
+import Survey from '../ConnectedState/Patient/Survey';
 import LoadingState from '../LoadingState';
 import HelpScreen from '../ConnectedState/Patient/HelpScreen';
 import { removeDevice, createBLEProxy } from '../../actions';
-import { report, disconnect, help, home, person } from './icon';
+import { report, disconnect, help, home, person, survey } from './icon';
 import { styles, drawerOptions } from './styles';
 import { patient } from '../../utils/config';
 
@@ -39,13 +40,14 @@ class Navigation extends Component {
             <View style={styles.sectionBody}>
               <DrawerItem icon={({size}) => this.icon(home, size)} label="BACPAC" onPress={() => {props.navigation.navigate('BACPAC')}} />
               <DrawerItem icon={({size}) => this.icon(person, size)} label="Profile" onPress={() => {props.navigation.navigate('Profile')}} />
-              <DrawerItem icon={({size}) => this.icon(help, size)} label="Help" onPress={() => {props.navigation.navigate('Help')}} />
+              <DrawerItem icon={({size}) => this.icon(survey, size)} label="Survey" onPress={() => {props.navigation.navigate('Survey')}} />
             </View>
           </View>
 
           <View style={styles.section} >
             <Text style={styles.sectionTitle}>Other</Text>
             <View style={styles.sectionBody}>
+              <DrawerItem icon={({size}) => this.icon(help, size)} label="Help" onPress={() => {props.navigation.navigate('Help')}} />
               <DrawerItem icon={({size}) => this.icon(report, size)} label="Report Issue" onPress={() => Linking.openURL(`mailto:support@BACPAC.org?subject=${this.props.device.uuid}`)} />
               <DrawerItem icon={({size}) => this.icon(disconnect, size)} label="Disconnect" onPress={this.props.removeDevice} />
             </View>
@@ -62,6 +64,7 @@ class Navigation extends Component {
           <Drawer.Screen name="BACPAC" component={ConnectedState} />
           <Drawer.Screen name="Help" component={HelpScreen} />
           <Drawer.Screen name="Profile" component={Profile} />
+          <Drawer.Screen name="Survey" component={Survey} />
         </Drawer.Navigator>
       );
     }
