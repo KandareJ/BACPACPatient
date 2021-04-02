@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { View, Text, TextInput, ScrollView } from 'react-native';
 import Slider from '@react-native-community/slider';
 import { connect } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 
 import TopBar from '../../../SharedComponents/TopBar';
 import Button from '../../../SharedComponents/Button';
 import RadioButtons from './RadioButtons';
 import DateOfBirth from './DateOfBirth';
 import { styles } from './styles';
-import { savePatient } from '../../../../logic/logicFacade';
+import { savePatient, saveProfile } from '../../../../logic/logicFacade';
 
 class Profile extends Component {
   state = {
@@ -18,7 +19,8 @@ class Profile extends Component {
     height: 68,
     weight: 185,
     dob: new Date(),
-    dateVisible: false
+    dateVisible: false,
+    patient_id: uuidv4()
   }
 
   back = () => {
@@ -27,17 +29,24 @@ class Profile extends Component {
 
   updateProfile = () => {
     this.refs.profileScroll.scrollTo({y: 0});
-    let profile = {
-      gender: this.state.gender,
+    savePatient({
       first_name: this.state.first_name,
-      last_name: this.state.last_name,
-      height: this.state.height,
-      weight: this.state.weight,
-      dob: this.state.dob
-    }
-    savePatient(profile).then(() => {
-      this.setState({ dateVisible: false });
-      this.props.navigation.push('Tests')
+      last_name:this.state.last_name,
+      patient_id: this.state.patient_id,
+      dob: this.state.dob,
+    }).then(() => {
+      saveProfile({
+        gender: this.state.gender,
+        first_name: this.state.first_name,
+        last_name: this.state.last_name,
+        height: this.state.height,
+        weight: this.state.weight,
+        dob: this.state.dob,
+        patient_id: this.state.patient_id,
+      }, this.state.patient_id).then(() => {
+        this.setState({ dateVisible: false });
+        this.props.navigation.push('Tests')
+      });
     });
   }
 
