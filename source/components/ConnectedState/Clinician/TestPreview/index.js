@@ -55,7 +55,7 @@ export default class TestPreview extends Component {
         <View style={styles.bg}>
             <View style={styles.video}>
               <Video
-                ref={(ref: Video) => { this.video = ref }}
+                ref={(ref) => { this.video = ref }}
                 source={this.test.video}
                 style={{flex: 1}}
                 controls={true}
