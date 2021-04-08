@@ -41,3 +41,12 @@ export const getExercise = async (exercise, patient_id) => {
   let res = await AsyncStorage.getItem(`bacpac:${patient_id}:${exercise}`);
   return JSON.parse(res);
 }
+
+export const addExercise = async (exercise, patient_id, data) => {
+  let last = await getExercise(exercise, patient_id);
+  let lastParsed = JSON.parse(last);
+  lastParsed = (lastParsed) ? lastParsed : [];
+  await AsyncStorage.setItem(`bacpac:${patient_id}:${exercise}`, JSON.stringify([data, ...lastParsed]));
+  //optimize this last statement later on by appending instead of prepending
+  return 0;
+}
