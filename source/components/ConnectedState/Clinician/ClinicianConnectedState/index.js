@@ -12,8 +12,7 @@ import SelectPatient from '../SelectPatient';
 
 const Stack = createStackNavigator();
 
-export default class ClinicianConnectedState extends Component {
-  render() {
+const ClinicianConnectedState = () => {
     return (
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Patient" component={SelectPatient} />
@@ -25,5 +24,6 @@ export default class ClinicianConnectedState extends Component {
         <Stack.Screen name="Profile" component={Profile} />
       </Stack.Navigator>
     );
-  }
 };
+
+export default ClinicianConnectedState;

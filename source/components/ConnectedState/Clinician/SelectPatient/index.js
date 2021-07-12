@@ -23,7 +23,7 @@ const SelectPatient = ({ navigation, setPatientID, clearExercise }) => {
   return (
     <TopBar title={'Select Patient'}>
       <ScrollView style={{backgroundColor: '#e3e3e3'}}>
-        {patientInfo.map((x) => <PatientName patientInfo={x} onPress={selectPatient} key={x.first_name+x.last_name} />)}
+        {patientInfo.map((x,i) => <PatientName patientInfo={x} onPress={selectPatient} key={x.first_name+x.last_name+i} />)}
         <View style={{alignItems: 'center'}}>
         <TouchableOpacity onPress={() => navigation.push('Profile')}>
           <View style={styles.addIcon}>

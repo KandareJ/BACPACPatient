@@ -35,7 +35,7 @@ export default class BLEProxy {
   syncData = async (deviceID, onReceiveData) => {
     let device = await this.manager.discoverAllServicesAndCharacteristicsForDevice(deviceID);
     let services = await device.services();
-    let characteristics = await this.manager.characteristicsForDevice(deviceID, services[0].uuid);
+    let characteristics = await this.manager.characteristicsForDevice(deviceID, services[1].uuid);
     //let battery = await device.readCharacteristicForService(services[0].uuid, characteristics[0].uuid);
     this.manager.monitorCharacteristicForDevice(deviceID, services[0].uuid, characteristics[0].uuid, onReceiveData, 'sync');
   }

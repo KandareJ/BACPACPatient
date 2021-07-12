@@ -3,6 +3,7 @@ import { ADD_DEVICE, FINISH_CONNECTING, REMOVE_DEVICE, CREATE_BLE_PROXY, SET_PAT
 import BLEProxy from '../logic/BLEProxy';
 
 export const addedDeviceReducer = (last = null, action) => {
+  console.log(action.payload);
   if (action.type === ADD_DEVICE) {
     return action.payload
   }

@@ -9,9 +9,8 @@ import { finishConnecting } from '../../actions';
 import TopBar from '../SharedComponents/TopBar';
 
 class LoadingState extends Component {
-
   render() {
-    if (simulator) setTimeout(this.props.finishConnecting, 2000);
+    setTimeout(this.props.finishConnecting, 2000);
 
     return(
       <TopBar title={"Connecting..."}>
